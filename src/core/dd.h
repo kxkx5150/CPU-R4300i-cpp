@@ -1,0 +1,67 @@
+#ifndef __dd_controller_h__
+#define __dd_controller_h__
+#include "../../utils/common.h"
+#include "../../utils/common/sha1.h"
+#include "../../utils/common/rom_file.h"
+#include "bus.h"
+
+enum dd_register
+{
+    DD_ASIC_DATA,
+    DD_ASIC_MISC_REG,
+    DD_ASIC_CMD_STATUS,
+    DD_ASIC_CUR_TK,
+    DD_ASIC_BM_STATUS_CTL,
+    DD_ASIC_ERR_SECTOR,
+    DD_ASIC_SEQ_STATUS,
+    DD_ASIC_CUR_SECTOR,
+    DD_ASIC_HARD_RESET,
+    DD_ASIC_C1_S0,
+    DD_ASIC_HOST_SECBYTE,
+    DD_ASIC_C1_S2,
+    DD_ASIC_SEC_BYTE,
+    DD_ASIC_C1_S4,
+    DD_ASIC_C1_S6,
+    DD_ASIC_CUR_ADDR,
+    DD_ASIC_ID_REG,
+    DD_ASIC_TEST_REG,
+    DD_ASIC_TEST_PIN_SEL,
+    NUM_DD_REGISTERS
+};
+struct dd_variant
+{
+    const char   *description;
+    uint8_t       seed;
+    const uint8_t sha1[SHA1_SIZE];
+};
+struct dd_controller
+{
+    struct bus_controller *bus;
+    const uint8_t         *ipl_rom;
+    const uint8_t         *rom;
+    size_t                 rom_size;
+    bool                   retail;
+    bool                   write;
+    uint32_t               track_offset;
+    uint32_t               zone;
+    uint8_t                start_block;
+    bool                   bm_reset_held;
+    uint32_t               regs[DD_REGS_ADDRESS_LEN / 4];
+    uint8_t                c2s_buffer[DD_C2S_BUFFER_LEN];
+    uint8_t                ds_buffer[DD_DS_BUFFER_LEN];
+    uint8_t                ms_ram[DD_MS_RAM_LEN];
+    int32_t                rtc_offset_seconds;
+};
+
+const struct dd_variant *dd_identify_variant(struct rom_file *ipl);
+int dd_init(struct dd_controller *dd, struct bus_controller *bus, const uint8_t *ddipl, const uint8_t *ddrom,
+            size_t ddrom_size);
+
+void dd_pi_write(void *opaque, uint32_t address);
+int  dd_dma_read(void *opaque, uint32_t source, uint32_t dest, uint32_t length);
+int  dd_dma_write(void *opaque, uint32_t source, uint32_t dest, uint32_t length);
+int  read_dd_ipl_rom(void *opaque, uint32_t address, uint32_t *word);
+int  write_dd_ipl_rom(void *opaque, uint32_t address, uint32_t word, uint32_t dqm);
+int  read_dd_controller(void *opaque, uint32_t address, uint32_t *word);
+int  write_dd_controller(void *opaque, uint32_t address, uint32_t word, uint32_t dqm);
+#endif
