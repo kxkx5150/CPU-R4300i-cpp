@@ -20,6 +20,12 @@ sudo apt install mesa-common-dev libopenal-dev
 
 <br>
 
+
+https://user-images.githubusercontent.com/10168979/190008980-cfb05b37-bd01-4a24-ba6c-a4d48ed8d1e7.mp4
+
+
+
+
 use cen64 as a reference
 
 <br><br><br><br><br>
