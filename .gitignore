@@ -36,20 +36,7 @@
 *.pkg
 
 # Archives #
-######################
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.bzip
-*.bz2
-*.xz
-*.lzma
-*.cab
+
 
 # Backups #
 ######################

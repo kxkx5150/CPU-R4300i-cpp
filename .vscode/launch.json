@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/n64",
-            "args": ["${workspaceFolder}/bin/pifdata.bin", "${workspaceFolder}/bin/sm.z64"],
+            "args": ["${workspaceFolder}/bin/pifdata.bin", "${workspaceFolder}/PDrom/squaresdemo.z64"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
             "environment": [],
