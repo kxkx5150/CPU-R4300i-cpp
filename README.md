@@ -13,7 +13,7 @@
 Ubuntu 22.04
 
 <pre>
-sudo apt install mesa-common-dev libopenal-dev
+sudo apt install build-essential cmake clang-format mesa-common-dev libopenal-dev
 </pre>
 
 <br><br><br>
