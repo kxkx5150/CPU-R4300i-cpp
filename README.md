@@ -6,7 +6,7 @@
 
 <br><br><br>
 
-### requires a PIF image (pifdata.bin)
+## requires a PIF image (pifdata.bin)
 
 <br><br><br>
 
@@ -20,11 +20,7 @@ sudo apt install build-essential cmake clang-format mesa-common-dev libopenal-de
 
 <br>
 
-
 https://user-images.githubusercontent.com/10168979/190008980-cfb05b37-bd01-4a24-ba6c-a4d48ed8d1e7.mp4
-
-
-
 
 use cen64 as a reference
 

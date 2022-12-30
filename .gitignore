@@ -90,3 +90,4 @@ debug/
 bin/
 release/
 .cache/
+pifdata.bin
